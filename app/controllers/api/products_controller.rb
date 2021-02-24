@@ -4,9 +4,9 @@ class Api::ProductsController < ApplicationController
     render "index.json.jb"
   end
 
-  def product1
+  def chair
 
-    @product1 = Product.first
-    render "product1.json.jb"
+    @product = Product.find_by(id: 1)
+    render "chair.json.jb"
   end 
 end

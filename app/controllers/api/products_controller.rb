@@ -4,9 +4,20 @@ class Api::ProductsController < ApplicationController
     render "index.json.jb"
   end
 
-  def chair
+  def show
+    @id = { id: params[:id] }
+    @product = Product.find_by(@id)
+    render "show.json.jb"
+  end
 
-    @product = Product.find_by(id: 1)
-    render "chair.json.jb"
-  end 
+  def create
+    @product = Product.new(
+      name: params[:name],
+      price: params[:price],
+      image_url: params[:image_url],
+      description: params[:description],
+    )
+    @product.save
+    render "show.json.jb"
+  end
 end

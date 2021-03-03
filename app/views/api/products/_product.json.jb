@@ -1,4 +1,3 @@
-# render partial: "product.json.jb", locals: { recipe: @recipe }
 { id: @product.id,
   name: @product.name,
   price: number_to_currency(@product.price),

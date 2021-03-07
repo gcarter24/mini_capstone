@@ -1,6 +1,15 @@
 class Api::ProductsController < ApplicationController
   def index
-    @products = Product.all
+    if params[:discount] == "true"
+      @products = Product.where("price < 15")
+    elsif params[:sort] == "price" && params[:sort_order] == "desc"
+      @products = Product.order(price: :desc)
+    elsif params[:sort] == "price" && params[:sort_order] == "asc"
+      @products = Product.all.order(price: :asc)
+    else
+      @products = Product.all
+    end
+
     render "index.json.jb"
   end
 
@@ -26,8 +35,8 @@ class Api::ProductsController < ApplicationController
 
   def update
     @product = Product.find_by(id: params[:id])
-    @product.name = params[:name]
-    @product.price = params[:price]
+    @product.name = params[:name] || @product.name
+    @product.price = params[:price] || @product.price
     @product.image_url = params[:image_url] || @product.image_url
     @product.description = params[:description] || @product.description
     if @product.save

@@ -10,3 +10,5 @@
 # product.save
 
 # Product.create({ name: "bulb", price: 3, image_url: "", description: "a thing to light stuff" })
+
+# Supplier.create(name: "Amazon", email: "jeffbezos@amazon.com", phone_number: "888-666-3782")

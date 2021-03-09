@@ -8,9 +8,10 @@ class Product < ApplicationRecord
   validates :description, length: { in: 10..500 }
   validates :image_url, uniqueness: true
 
+  #belongs_to :supplier
   def supplier
     Supplier.find_by(id: supplier_id)
-  end 
+  end
 
   def is_discounted?
     if price < 10

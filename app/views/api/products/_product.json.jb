@@ -4,6 +4,6 @@
   discount: product.is_discounted?,
   tax: number_to_currency(product.tax),
   total: number_to_currency(product.total),
-  image_url: product.image_url,
+  images: product.images,
   description: product.description,
   supplier: product.supplier.name }

@@ -6,7 +6,7 @@ class Product < ApplicationRecord
   validates :description, presence: true
   validates :description, uniqueness: true
   validates :description, length: { in: 10..500 }
-  validates :image_url, uniqueness: true
+  
   has_many :images
   belongs_to :supplier
 

@@ -1,11 +1,11 @@
 class Api::OrdersController < ApplicationController
   def index
     if current_user
-      @orders = Order.all
+      @orders = current_user.orders
+      render "index.json.jb"
     else
       render json: { error: "you must be signed in to view that" }
     end
-    render "index.json.jb"
   end
 
   def create
@@ -27,11 +27,11 @@ class Api::OrdersController < ApplicationController
 
   def show
     if current_user
-      @order = Order.find_by(id: params[:id])
+      @order = current_user.orders.find_by(id: params[:id])
+      render "show.json.jb"
     else
       render json: { error: "you must be signed in to view that" }
     end
-    render "show.json.jb"
   end
 
   # -hold product for purchase

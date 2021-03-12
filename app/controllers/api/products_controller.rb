@@ -1,4 +1,6 @@
 class Api::ProductsController < ApplicationController
+  before_action :authenticate_admin, only: [:create, :update, :destroy]
+
   def index
     # if params[:discount] == "true"
     #   @products = Product.where("price < 15")
@@ -9,12 +11,8 @@ class Api::ProductsController < ApplicationController
     # else
     #   @products = Product.all
     # end
-    if current_user
-      @products = Product.all
-    else
-      @products = []
-    end
 
+    @products = Product.all
     render "index.json.jb"
   end
 

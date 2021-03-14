@@ -1,5 +1,6 @@
 { id: product.id,
   name: product.name,
+  categories: product.categories,
   price: product.price,
   discount: product.is_discounted?,
   tax: number_to_currency(product.tax),

@@ -29,7 +29,7 @@ class Api::ProductsController < ApplicationController
       images: params[:images],
       description: params[:description],
     )
-    if @product.save
+    if @product.save!
       render "show.json.jb"
     else
       render json: { errors: @product.errors.full_messages }

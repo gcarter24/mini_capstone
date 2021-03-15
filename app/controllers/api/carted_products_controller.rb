@@ -2,6 +2,7 @@ class Api::CartedProductsController < ApplicationController
   before_action :authenticate_user
 
   def index
+    @carted_products = CartedProduct.all
     render "index.json.jb"
   end
 

@@ -1,1 +1,10 @@
-{message: "hello"}
+@carted_products.map { |product|
+  {
+    id: product.id,
+    product_id: product.product.id,
+    quantity: product.quantity,
+    user_id: current_user.id,
+    status: product.status,
+    order_id: product.order.id,
+  }
+}

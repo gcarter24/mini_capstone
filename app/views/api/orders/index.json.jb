@@ -1,11 +1,16 @@
 @orders.map { |order|
   {
     id: order.id,
-    product: order.product,
     user_id: order.user_id,
-    quantity: order.quantity,
-    total: order.total,
-    tax: order.tax,
     subtotal: order.subtotal,
+    tax: order.tax,
+    total: order.total,
+    carted_products: order.carted_products.map { |carted_product|
+      {
+        id: carted_product.id,
+        product: carted_product.product,
+        quantity: carted_product.quantity,
+      }
+    },
   }
 }
